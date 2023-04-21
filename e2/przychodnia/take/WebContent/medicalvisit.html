@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>TAKE przychodnia</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="js/scripts.js"></script>
+		<script src="js/patients.js"></script>
+		<script src="js/doctors.js"></script>
+		<script src="js/diseases.js"></script>
+		<script src="js/medicalvisits.js"></script>
+	</head>
+	<body>
+		<div class="headerBox">
+			<div class="headerTitle">
+				Przychodnia lekarska
+			</div>
+		</div>
+		<div class="menuBox">
+			<a href="http://localhost:8080/take/doctors.html">
+				<span class="menuButton">Lekarze</span>
+			</a>
+			<a href="http://localhost:8080/take/diseases.html">
+				<span class="menuButton">Choroby</span>
+			</a>
+			<a href="http://localhost:8080/take/patients.html">
+				<span class="menuButton">Pacjenci</span>
+			</a>
+			<a href="http://localhost:8080/take/medicalvisits.html">
+				<span class="menuButton menuButtonActive">Wizyty</span>
+			</a>
+		</div>
+		<div class="content">
+			<div class="formBox">
+				<input type="hidden" name="id" />
+				<div class="formEl">
+					<label>Data Wizyty</label>
+					<input type="text" name="visit_date" />
+				</div>
+				<div class="formEl">
+					<label>Komentarz</label>
+					<input type="medicines" name="medicines" />
+				</div>
+				<div class="formEl">
+					<label>Lekarstwa</label>
+					<input type="text" name="remarks" />
+				</div>
+				<div class="formEl">
+					<label>Pacjent</label>
+					<!--input type="text" name="patient" /-->
+					<select name="patient">
+						<option value="">---</option>
+						<option value="1" data-obj='{"id":"1","login":"new_user","name":"Nowy","password":"haslo123","specialization":"brak","surname":"Uzytkownik"}'>test</option>
+					</select>
+				</div>
+				<div class="formEl">
+					<label>Doktor</label>
+					<!--input type="text" name="doctor" /-->
+					<select name="doctor">
+						<option value="">---</option>
+						<option value="2">tst</option>
+					</select>
+				</div>
+				<div class="formEl">
+					<label>Choroby</label>
+					<div id="diseases" style="margin-left: 200px; display: flex; flex-direction: column;">
+						<div><input type="checkbox" name="disease[]" value="1" /> Przeziębienie</div>
+						<div><input type="checkbox" name="disease[]" value="2" /> Jelitówka</div>
+						<div><input type="checkbox" name="disease[]" value="3" /> Złamanie</div>
+					</div>
+					<script>
+						function test(){
+							var x=document.getElementsByName("patient")[0];
+							var patient=JSON.parse(x.options[x.selectedIndex].getAttribute('data-obj'));
+							console.log(patient);
+							/*var tab=new Array();
+							tab['name']="John";
+							var obj=Object.assign({}, tab);
+							console.log(tab);
+							console.log(obj);//*/
+							//console.log(JSON.stringify(tab));
+							//console.log(JSON.stringify(obj));
+							//console.log(JSON.parse(JSON.stringify(obj)));
+						}
+					</script>
+				</div>
+				<div class="formEl" id="buttons">
+					<span class="button" onclick="save_medicalvisit()">zapisz</span>
+					<a href="http://localhost:8080/take/medicalvisits.html" class="linkButton">wróć</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		get_patients(false);
+		get_doctors(false);
+		get_diseases(false);
+		const urlParams = new URLSearchParams(window.location.search);
+		var id=urlParams.get('id');
+		if(id) get_medicalvisit(id);
+	};
+</script>

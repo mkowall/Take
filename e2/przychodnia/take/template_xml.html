@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div id="test"></div>
+        
+        <div>
+        	<label>imie</label>
+        	<input type="text" name="name" />
+        </div>
+        <div>
+        	<label>nazwisko</label>
+        	<input type="text" name="surname" />
+        </div>
+        <div>
+        	<label>wiek</label>
+        	<input type="number" min="1" name="age" />
+        </div>
+        <button onclick="generate_xml()">generuj xml</button>
+        <button onclick="read_xml()">odczytaj xml</button>
+        <script>
+        	function generate_xml(){
+        		var name=document.getElementsByName("name")[0].value;
+        		var surname=document.getElementsByName("surname")[0].value;
+        		var age=document.getElementsByName("age")[0].value;//*/
+        		var obj={name: name, surname: surname};
+        		obj.age=age;
+        		
+        		console.log(obj);
+        		var xml='<test>';
+        		
+        		Object.keys(obj).forEach(el => {
+					xml+='<'+el+'>'+obj[el]+'</'+el+'>';
+				});
+				xml+='</test>';
+        		console.log(xml);
+				document.getElementById('test').innerHTML=xml;
+        	}
+        	
+        	function read_xml(){
+        		var xml=document.getElementById('test').innerHTML;
+				if(!xml) return;
+        		console.log(xml);
+        		var parser = new DOMParser();
+				var xmlDoc = parser.parseFromString(xml,"text/xml");
+        		var obj=new Object;
+ 				for(let el of xmlDoc.children[0].children){
+        		//xmlDoc.children[0].children.forEach(el => {
+					obj[el.localName]=el.innerHTML; // tu pobiera stringa
+					//obj[el.localName]=el.firstChild.data; // tu pobiera wartość ale może rzucać błędy jak np puste
+				//});
+				}
+        		console.log(obj);
+        	}
+        </script>
+    </body>
+</html>

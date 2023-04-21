@@ -1,0 +1,7 @@
+strona z doktorami
+http://localhost:8080/take/doctors
+
+strona do serwera
+http://localhost:8080/h2console/console/
+jdbc url:	jdbc:h2:mem:test
+password:	sa

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>TAKE przychodnia</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="js/scripts.js"></script>
+		<script src="js/doctors.js"></script>
+	</head>
+	<body>
+		<div class="headerBox">
+			<div class="headerTitle">
+				Przychodnia lekarska
+			</div>
+		</div>
+		<div class="menuBox">
+			<a href="http://localhost:8080/take/doctors.html">
+				<span class="menuButton menuButtonActive">Lekarze</span>
+			</a>
+			<a href="http://localhost:8080/take/diseases.html">
+				<span class="menuButton">Choroby</span>
+			</a>
+			<a href="http://localhost:8080/take/patients.html">
+				<span class="menuButton">Pacjenci</span>
+			</a>
+			<a href="http://localhost:8080/take/medicalvisits.html">
+				<span class="menuButton">Wizyty</span>
+			</a>
+		</div>
+		<div class="content">
+			<div class="searchBox">
+				<div class="searchBox">
+					<label>Login</label>
+					<input type="text" name="login" />
+				</div>
+				<div class="searchBox">
+					<label>Imię</label>
+					<input type="text" name="name" />
+				</div>
+				<div class="searchBox">
+					<label>Nazwisko</label>
+					<input type="text" name="surname" />
+				</div>
+				<div class="searchBox">
+					<label>Specjalizacja</label>
+					<input type="text" name="specialization" />
+				</div>
+				<div class="searchBox">
+					<span class="button" onclick="get_doctors(true)">szukaj</span>
+					<a href="http://localhost:8080/take/doctor.html" class="linkButton">dodaj</a>
+				</div>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Login</th>
+						<th>Hasło</th>
+						<th>Imię</th>
+						<th>Nazwisko</th>
+						<th>Specjalizacja</th>
+						<th>Operacje</th>
+					</tr>
+				</thead>
+				<tbody id="doctors">
+				</tbody>
+			</table>
+		</div>
+		
+        <!--div id="doctors_xml">
+				<doctors>
+					<doctors>
+						<id>1</id>
+						<login>new_user</login>
+						<name>Nowy</name>
+						<password>haslo123</password>
+						<specialization>brak</specialization>
+						<surname>Uzytkownik</surname>
+					</doctors>
+					<doctors>
+						<id>2</id>
+						<login>dr_oetker</login>
+						<name>August</name>
+						<password>razdwatrzy</password>
+						<specialization>Ciasta</specialization>
+						<surname>Oetker</surname>
+					</doctors>
+					<doctors>
+						<id>3</id>
+						<login>dr_gerard</login>
+						<name>Doktor</name>
+						<password>trzydwajeden</password>
+						<specialization>Pryncypalki</specialization>
+						<surname>Gerard</surname>
+						</doctors>
+				</doctors>
+        </div-->
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		get_doctors(true);
+	};
+</script>

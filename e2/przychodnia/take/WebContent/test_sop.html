@@ -1,0 +1,24 @@
+<script>
+function sendAjax() {
+	xmlHttp=new XMLHttpRequest();
+	var url="http://localhost:8080/take/cors/source.jsp";
+	alert(url);
+	xmlHttp.onreadystatechange=stateChanged;
+	xmlHttp.open("GET", url, true);
+	xmlHttp.send();
+}
+function stateChanged() {
+	if (xmlHttp.readyState==4) { 
+		document.getElementById("dane").innerHTML = xmlHttp.responseText;
+	}
+}
+
+</script>
+
+</head>
+<body>
+<p id="dane">-brak-</p>
+<p>
+<button onClick="sendAjax()">Go</button>
+
+</body>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>TAKE przychodnia</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="js/scripts.js"></script>
+		<script src="js/diseases.js"></script>
+	</head>
+	<body>
+		<div class="headerBox">
+			<div class="headerTitle">
+				Przychodnia lekarska
+			</div>
+		</div>
+		<div class="menuBox">
+			<a href="http://localhost:8080/take/doctors.html">
+				<span class="menuButton">Lekarze</span>
+			</a>
+			<a href="http://localhost:8080/take/diseases.html">
+				<span class="menuButton menuButtonActive">Choroby</span>
+			</a>
+			<a href="http://localhost:8080/take/patients.html">
+				<span class="menuButton">Pacjenci</span>
+			</a>
+			<a href="http://localhost:8080/take/medicalvisits.html">
+				<span class="menuButton">Wizyty</span>
+			</a>
+		</div>
+		<div class="content">
+			<div class="formBox">
+				<input type="hidden" name="id" />
+				<div class="formEl">
+					<label>Nazwa Choroby</label>
+					<input type="text" name="name" />
+				</div>
+				<div class="formEl">
+					<label>Symptomy</label>
+					<input type="text" name="symptoms" />
+				</div>
+				<div class="formEl">
+					<label>Powoduje</label>
+					<input type="text" name="causes" />
+				</div>
+				<div class="formEl">
+					<label>Leki</label>
+					<input type="text" name="cure" />
+				</div>
+				<div class="formEl" id="buttons">
+					<span class="button" onclick="save_disease()">zapisz</span>
+					<a href="http://localhost:8080/take/diseases.html" class="linkButton">wróć</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		const urlParams = new URLSearchParams(window.location.search);
+		var id=urlParams.get('id');
+		if(id) get_disease(id);
+	};
+</script>

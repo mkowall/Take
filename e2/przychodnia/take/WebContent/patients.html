@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>TAKE przychodnia</title>
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="js/scripts.js"></script>
+		<script src="js/patients.js"></script>
+	</head>
+	<body>
+		<div class="headerBox">
+			<div class="headerTitle">
+				Przychodnia lekarska
+			</div>
+		</div>
+		<div class="menuBox">
+			<a href="http://localhost:8080/take/doctors.html">
+				<span class="menuButton">Lekarze</span>
+			</a>
+			<a href="http://localhost:8080/take/diseases.html">
+				<span class="menuButton">Choroby</span>
+			</a>
+			<a href="http://localhost:8080/take/patients.html">
+				<span class="menuButton menuButtonActive">Pacjenci</span>
+			</a>
+			<a href="http://localhost:8080/take/medicalvisits.html">
+				<span class="menuButton">Wizyty</span>
+			</a>
+		</div>
+		<div class="content">
+			<div class="searchBox">
+				<!--div>
+					<label>Pesel</label>
+					<input type="text" name="pesel" />
+				</div-->
+				<div class="searchFormEl">
+					<label>Imię</label>
+					<input type="text" name="name" />
+				</div>
+				<div class="searchFormEl">
+					<label>Nazwisko</label>
+					<input type="text" name="surname" />
+				</div>
+				<!--div>
+					<label>Telefon</label>
+					<input type="text" name="phone" />
+				</div>
+				<div>
+					<label>Email</label>
+					<input type="text" name="email" />
+				</div-->
+				<div>
+					<span class="button" onclick="get_patients(true)">szukaj</span>
+					<a href="http://localhost:8080/take/patient.html" class="linkButton">dodaj</a>
+				</div>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Pesel</th>
+						<th>Hasło</th>
+						<th>Imię</th>
+						<th>Nazwisko</th>
+						<th>Telefon</th>
+						<th>Email</th>
+						<th>Operacje</th>
+					</tr>
+				</thead>
+				<tbody id="patients">
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
+<script>
+	window.onload=function(){
+		get_patients(true);
+	};
+</script>
